@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <h2 class="countdown"></h2>
+
+    <h2 class="info">Pencet Box-nya!</h2>
+    <div class="gift-box">
+      <div class="gift-top">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="gift-body">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="gift-content">
+        <h1>🎉 Yeeeyy 🎉</h1>
+        <p>
+          Selamat, Sarah dapet 1 ebook novel dari aku
+        </p>
+        <img src="bulan.jpg" alt="bulan" width="100px">
+        <div class="btn">
+          <button class="btn-story">Klik aku plzz 😌</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="story">
+      <h1>Hallo, Sarah 👋</h1>
+      <div id="text-1"></div>
+    </div>
+
+    <audio hidden>
+      <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    <h6>Made with ♥️ by Sarahphile</h6>
+      <!-- Element to contain animated typing -->
+
+
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+  <script>
+
+      const gift = document.querySelector(".gift-box"),
+            giftContent = document.querySelector(".gift-content"),
+            giftTop = document.querySelector(".gift-top"),
+            btnStory = document.querySelector(".btn-story")
+            story = document.querySelector(".story"),
+            audio = document.querySelector("audio"),
+            time = document.querySelector(".time"),
+            countdown = document.querySelector(".countdown"),
+            info = document.querySelector(".info");
+
+      let x = 1;
+
+/*
+      setInterval(() => {
+        let date = new Date(),
+            hour = date.getHours(),
+            minute = date.getMinutes(),
+            second = date.getSeconds();
+        time.innerText = `${hour}:${minute}:${second}`;
+      }, 1000)
+*/
+      gift.addEventListener("click", () => {
+        document.querySelector(".info").style.display = "none";
+        if(x != 0) {
+          gift.classList.add("gift-anim")
+          setTimeout(() => {
+            giftTop.classList.add("gift-open");
+            giftContent.style.transform = "scale(1) translateY(-400px)";
+            gift.classList.remove("gift-anim")
+          }, 3000);
+        }
+        x = 0;
+      });
+      
+
+
+
+      btnStory.addEventListener("click", () => {
+        story.style.transform = "scale(1)";
+        // audio.play()
+        var text1 = new Typed('#text-1', {
+          strings: [' <p>Aku mau sedikit cerita. Waktu itu kamu pernah kirim foto tentang serial Bumi dari Tere Liye kan? waktu tanggal 28 Juni kemaren. Nah berawal dari situ aku langsung kepikiran dan janji sama diri aku buat dapetin salah satu novelnya, ntar bakal aku kasih ke kamu. Alhamdulillah sekarang aku bisa beli salah satunya hehe... <br><br> Oiya, mungkin kamu bakal nanya, kenapa aku pilih yang "Bulan". Jadi gini, sebelumnya kamu udah baca yang "Bumi" kan? yaudah deh aku beli yang ini aja, soalnya setelah Bumi lanjutannya pasti Bulan. Begitu kan urutannya ya? Aku harap aku nggk salah milih sih 😔 <br><br> Maaf ya, cuma bisa kasih versi ebook-nya, setidaknya aku udah nepati janji sama diri aku sendiri. Ya mungkin ini cuma hal kecil yang bisa aku kasih buat kamu. I hope you like it!</p> <br><h2>Cara baca novelnya:</h2> <ol><li>Tambahkan akun google baru</li><li>Download apk PlayBook</li><li>Masuk ke apk PlayBook</li><li>Selamat membaca!</li></ol> <h3>Akun Google-nya:</h3>email: ursamajor1002@gmail.com<br>pass: <br><br>emailnya aku bikin baru, btw'],
+          typeSpeed: 2,
+        });
+      })
+
+      function countTime() {
+      // Tanggal dan waktu saat ini
+      const now = new Date();
+
+      // Tanggal dan waktu tujuan (15:00:00)
+      const targetTime = new Date();
+      targetTime.setHours(14);
+      targetTime.setMinutes(0);
+      targetTime.setSeconds(0);
+
+      // Jika waktu tujuan lebih kecil dari waktu saat ini, artinya sudah lewat dan akan ditambahkan 1 hari
+
+      // Hitung selisih waktu antara waktu tujuan dan waktu saat ini dalam milidetik
+      const timeDiff = targetTime - now;
+
+      // Konversi selisih waktu menjadi jam, menit, dan detik
+      const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      // Tampilkan hasil countdown
+        countdown.innerHTML = `Countdown:<br> ${hours} jam ${minutes} menit ${seconds} detik`;
+
+      // Jika waktu tujuan belum tercapai, lakukan pemanggilan fungsi countdown() setelah 1 detik
+      if (timeDiff > 0) {
+        setTimeout(countTime, 1000);
+      } else {
+        document.body.style.padding = "25vh 0";
+        gift.style.display = "flex";
+        info.style.display = "block";
+        countdown.style.display = "none";
+
+      }
+    }
+
+      countTime()
+
+    </script>
+  </body>
+</html>
